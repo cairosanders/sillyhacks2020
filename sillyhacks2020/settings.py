@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Own
+    'meme',
+    'frontend',
 
+    #other
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
