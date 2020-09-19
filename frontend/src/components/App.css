@@ -1,0 +1,21 @@
+.App {
+  font: 20px "Roboto", sans-serif;
+}
+
+.heading {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#textbox {
+  margin: 20px;
+}
+
+form > #submit {
+  margin: 30px;
+}

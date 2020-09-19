@@ -1,47 +1,54 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom'
+import React, { Component } from "react";
+import Game from "./Game";
+import "./App.css";
 
 class App extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       data: [],
     };
   }
 
-
-  componentDidMount(){
+  componentDidMount() {
     fetch("meme/api/")
-      .then(response=>{
-        if(response.status > 400) {
-          return this.setState(()=>{
+      .then((response) => {
+        if (response.status > 400) {
+          return this.setState(() => {
             return "something went wrong";
           });
         }
         return response.json();
       })
-      .then(data=>{
-        this.setState(()=>{
-          return{
+      .then((data) => {
+        this.setState(() => {
+          return {
             data,
-            loaded: true
+            loaded: true,
           };
         });
       });
   }
 
-  render(){
-    return(
-      <ul>
-        <h1>Silly Hacks 2020</h1>
-        {this.state.data.map(meme=>{
-          return(
+  render() {
+    return (
+      <div className="App">
+        <div class="heading">
+          <h1>Silly Hacks 2020</h1>
+        </div>
+
+        {this.state.data.map((meme) => {
+          return (
             <li key={meme.id}>
-            {meme.description} - {meme.img_url}
+              {meme.description} - {meme.img_url}
             </li>
           );
         })}
-      </ul>
+
+        <Game />
+      </div>
     );
   }
 }
+
+export default App;
